@@ -13,6 +13,7 @@ from service.command.mouse_middle import MouseMiddle
 from service.command.mouse_right import MouseRight
 from service.recv_close_handler.recv_close_handler import RecvCloseHandler
 from service.recv_close_handler.recv_file import RecvFile
+from service.recv_open_handler.recv_accelerometer import RecvAccelerometer
 from service.recv_open_handler.recv_gyroscope import RecvGyroscope
 from service.recv_open_handler.recv_microphone import RecvMicrophone
 from service.recv_open_handler.recv_open_handler import RecvOpenHandler
@@ -43,6 +44,7 @@ class MainService:
             'WEBCAM_RECV': RecvWebcam(),
             'MIC_RECV': RecvMicrophone(),
             'GYRO_RECV': RecvGyroscope(),
+            'ACC_RECV': RecvAccelerometer(),
         }
         self.send_close_handlers: dict[str, SendCloseHandler] = {
 

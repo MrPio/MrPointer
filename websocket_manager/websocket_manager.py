@@ -31,7 +31,7 @@ class WebsocketManager:
         notifica = winotify.Notification(
             app_id='MrPointer',
             title='Connection established',
-            msg=f'Connected to the token {token}.',
+            msg=f'Connected established with the token {token}.',
             icon=ICON_FOLDER + '/icon.ico',
             duration='short',
         )

@@ -10,6 +10,7 @@ from service.recv_open_handler.recv_open_handler import RecvOpenHandler
 class RecvWebcam(RecvOpenHandler):
 
     def process(self, msg: bytes) -> None:
+        super().process(msg)
         imageStream = io.BytesIO(msg)
         img = Image.open(imageStream)
         # cv2.imshow('webcam', cv2.resize(cv2.cvtColor(numpy.array(img), cv2.COLOR_RGB2BGR), (1280, 720)) )
@@ -17,5 +18,6 @@ class RecvWebcam(RecvOpenHandler):
         #     self.stop()
 
     def stop(self) -> None:
+        super().stop()
         print('*** stop recv_webcam ***')
         # cv2.destroyAllWindows()

@@ -1,15 +1,21 @@
 import abc
+import time
 
 
 class RecvOpenHandler(metaclass=abc.ABCMeta):
+    def __init__(self):
+        self.last_pckg: int | None = None
+        self.dt: float | None = None
 
-    def initialize(self,cmd: dict) -> None:
+    def initialize(self, cmd: dict) -> None:
         pass
 
-    @abc.abstractmethod
     def process(self, msg: bytes) -> None:
-        pass
+        now = time.time_ns()/1000000000.0
+        if self.last_pckg is not None:
+            self.dt = now - self.last_pckg
+        self.last_pckg = now
 
-    @abc.abstractmethod
     def stop(self) -> None:
-        pass
+        self.last_pckg = None
+        self.dt = None
