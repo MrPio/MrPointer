@@ -97,7 +97,7 @@ pystray_icon:Icon=Icon(
         'MrPointer',
         Image.open(ICON_FOLDER + "\icon_red.ico"),
         menu=Menu(
-            MenuItem('Connect to a token', stray_handler),
+            MenuItem('Connect to a token', stray_handler,default=True),
             Menu.SEPARATOR,
             MenuItem('Exit', stray_handler),
         )
@@ -106,4 +106,6 @@ pystray_icon:Icon=Icon(
 
 if __name__ == '__main__':
     pystray_icon.run_detached()
+
+    # Thread(target=websocket_manager.connect, args=['mrp']).start()
     show_token_request()
